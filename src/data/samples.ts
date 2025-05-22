@@ -4,6 +4,28 @@ import { Place, Activity, Event } from '../types';
 export const samplePlaces: Place[] = [
   {
     id: 'p1',
+    name: 'Chefchaouen Medina',
+    description: 'Known as the "Blue Pearl of Morocco", Chefchaouen\'s medina is famous for its striking blue-painted buildings and winding alleyways that create a magical atmosphere.',
+    location: {
+      continent: 'Africa',
+      country: 'Morocco',
+      city: 'Chefchaouen',
+      neighborhood: 'Medina',
+      coordinates: {
+        lat: 35.1715,
+        lng: -5.2697
+      }
+    },
+    categories: ['Cultural', 'Historical', 'Urban'],
+    domains: ['Tourism', 'Culture'],
+    accessibility: ['Free', 'Walking Required'],
+    activities: ['Photography', 'Shopping', 'Cultural Tours', 'Local Cuisine'],
+    media: {
+      images: ['https://images.pexels.com/photos/4388167/pexels-photo-4388167.jpeg']
+    }
+  },
+  {
+    id: 'p2',
     name: 'Parc de la Villette',
     description: 'A large urban park with gardens, playgrounds, and cultural venues including the Cité des Sciences et de l\'Industrie and the Philharmonie de Paris.',
     location: {
@@ -22,28 +44,6 @@ export const samplePlaces: Place[] = [
     activities: ['Walking', 'Cycling', 'Picnic', 'Museum Visits'],
     media: {
       images: ['https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg']
-    }
-  },
-  {
-    id: 'p2',
-    name: 'Shibuya Crossing',
-    description: 'The famous pedestrian crossing outside Shibuya Station in Tokyo, known as one of the busiest pedestrian intersections in the world.',
-    location: {
-      continent: 'Asia',
-      country: 'Japan',
-      city: 'Tokyo',
-      neighborhood: 'Shibuya',
-      coordinates: {
-        lat: 35.6594,
-        lng: 139.7005
-      }
-    },
-    categories: ['Urban', 'Cultural'],
-    domains: ['Entertainment', 'Business'],
-    accessibility: ['Free', 'Wheelchair Accessible'],
-    activities: ['People Watching', 'Photography', 'Shopping'],
-    media: {
-      images: ['https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg']
     }
   },
   {
@@ -137,28 +137,28 @@ export const samplePlaces: Place[] = [
 export const sampleActivities: Activity[] = [
   {
     id: 'a1',
-    name: 'Football Match',
-    description: 'Watch or play a football (soccer) match with friends or at a local club.',
-    context: ['Outdoor', 'Team'],
+    name: 'Chefchaouen Photography Tour',
+    description: 'Explore the stunning blue streets of Chefchaouen with a professional photographer, capturing the unique architecture and vibrant culture.',
+    context: ['Outdoor', 'Cultural', 'Photography'],
     classification: {
-      level1: 'Sport',
-      level2: 'Team Sports',
-      level3: 'Football'
+      level1: 'Art',
+      level2: 'Photography',
+      level3: 'Cultural Photography'
     },
-    compatiblePlaces: ['Stadium', 'Sport Complex', 'Park'],
+    compatiblePlaces: ['Medina', 'Plaza Uta el-Hammam', 'Kasbah'],
     bestTimes: {
-      timeOfDay: ['Afternoon', 'Evening'],
-      dayOfWeek: ['Weekend'],
-      season: ['All Year']
+      timeOfDay: ['Morning', 'Late Afternoon'],
+      dayOfWeek: ['Any'],
+      season: ['Spring', 'Autumn']
     },
     duration: {
-      min: 90,
-      max: 120,
-      unit: 'minutes'
+      min: 3,
+      max: 4,
+      unit: 'hours'
     },
-    frequency: 'Weekly',
+    frequency: 'Daily',
     media: {
-      images: ['https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg']
+      images: ['https://images.pexels.com/photos/4388164/pexels-photo-4388164.jpeg']
     }
   },
   {
@@ -296,27 +296,27 @@ export const sampleActivities: Activity[] = [
 export const sampleEvents: Event[] = [
   {
     id: 'e1',
-    name: 'Summer Music Festival',
-    description: 'A three-day music festival featuring top artists from around the world.',
-    date: '2025-07-15',
-    time: '14:00',
+    name: 'Chefchaouen Arts Festival',
+    description: 'Annual festival celebrating the artistic heritage of the Blue City, featuring local artists, musicians, and craftsmen.',
+    date: '2025-04-15',
+    time: '10:00',
     location: {
-      venue: 'Central Park',
-      city: 'New York',
-      country: 'USA'
+      venue: 'Plaza Uta el-Hammam',
+      city: 'Chefchaouen',
+      country: 'Morocco'
     },
-    category: ['Music', 'Festival', 'Entertainment'],
+    category: ['Culture', 'Art', 'Music', 'Festival'],
     status: 'upcoming',
     price: {
-      amount: 299,
-      currency: 'USD'
+      amount: 50,
+      currency: 'MAD'
     },
     capacity: {
-      total: 50000,
-      available: 15000
+      total: 1000,
+      available: 600
     },
     media: {
-      images: ['https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg']
+      images: ['https://images.pexels.com/photos/4388167/pexels-photo-4388167.jpeg']
     }
   },
   {
