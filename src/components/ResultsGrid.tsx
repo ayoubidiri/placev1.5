@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Calendar, Clock, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { ExplorationMode, TaxonomyItem, Place, Activity } from '../types';
 import { samplePlaces, sampleActivities } from '../data/samples';
 
@@ -9,7 +10,6 @@ interface ResultsGridProps {
 }
 
 const ResultsGrid: React.FC<ResultsGridProps> = ({ mode, taxonomyFilter }) => {
-  // In a real app, we would filter based on the taxonomy selection
   const items = mode === 'place' ? samplePlaces : sampleActivities;
   
   return (
@@ -36,10 +36,20 @@ interface PlaceCardProps {
 }
 
 const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
+  const navigate = useNavigate();
   const imageUrl = place.media?.images[0] || 'https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg';
   
+  const handleClick = () => {
+    if (place.location.city === 'Chefchaouen') {
+      navigate('/africa/morocco/chefchaouen');
+    }
+  };
+  
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+    <div 
+      className="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md hover:-translate-y-1 cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="h-48 overflow-hidden relative">
         <img 
           src={imageUrl} 
@@ -92,10 +102,8 @@ interface ActivityCardProps {
 }
 
 const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
-  // Sample images for activities - in a real app would come from the data
   const imageUrl = 'https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg';
   
-  // Build classification path
   const classificationPath = [
     activity.classification.level1,
     activity.classification.level2,
@@ -123,12 +131,12 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ activity }) => {
           {activity.description}
         </p>
         <div className="flex flex-wrap gap-1 mb-3">
-          {activity.context.slice(0, 3).map((context, index) => (
+          {activity.context.map((ctx, index) => (
             <span 
-              key={index} 
+              key={index}
               className="text-xs px-2 py-1 rounded-full bg-teal-100 text-teal-800"
             >
-              {context}
+              {ctx}
             </span>
           ))}
         </div>
