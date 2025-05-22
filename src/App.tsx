@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import PlacesSidebar from './components/PlacesSidebar';
 import HomePage from './pages/HomePage';
 import HealthPage from './pages/HealthPage';
+import ChefchaouenPage from './pages/ChefchaouenPage';
 import { ExplorationMode } from './types';
 
 function App() {
@@ -154,6 +155,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage mode={mode} />} />
             <Route path="/health" element={<HealthPage />} />
+            <Route path="/africa/morocco/chefchaouen" element={<ChefchaouenPage />} />
           </Routes>
         </main>
 
