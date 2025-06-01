@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Home, Menu, Globe, Search, MapPin, Activity, Calendar } from 'lucide-react';
+import { Globe, Search, MapPin, Activity, Calendar } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import PlacesSidebar from './components/PlacesSidebar';
 import HomePage from './pages/HomePage';
@@ -35,68 +35,28 @@ function App() {
             <div className="h-16 flex items-center justify-between gap-8">
               {/* Left section */}
               <div className="flex items-center gap-6">
-                <Link to="/" className="flex items-center">
-                  <span className="text-2xl font-bold text-blue-600">Place</span>
-                  <span className="text-2xl font-bold text-slate-800">2</span>
-                </Link>
-                
-                <div className="flex items-center gap-2">
-                  <Link to="/" className="p-2 rounded-md hover:bg-slate-50 transition-colors">
-                    <Home size={22} className="text-slate-700" />
-                  </Link>
-                  
-                  <button
-                    onClick={() => setIsSidebarOpen(true)}
-                    className="p-2 rounded-md hover:bg-slate-50 transition-colors"
-                  >
-                    <Menu size={22} className="text-slate-700" />
-                  </button>
-                  
-                  <button
-                    onClick={() => setIsPlacesSidebarOpen(true)}
-                    className="p-2 rounded-md hover:bg-slate-50 transition-colors"
-                  >
-                    <Globe size={22} className="text-slate-700" />
-                  </button>
-                </div>
+                <button
+                  onClick={() => setIsSidebarOpen(true)}
+                  className="p-2 rounded-md hover:bg-slate-50 transition-colors"
+                >
+                  <Search size={22} className="text-slate-700" />
+                </button>
               </div>
 
-              {/* Search section */}
-              <div className="flex-1 flex items-center gap-4 max-w-2xl">
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-40 px-3 py-2 bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700"
-                >
-                  {categories.map((category) => (
-                    <option key={category.value} value={category.value}>
-                      {category.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-                  <input
-                    type="text"
-                    placeholder={`Search in ${selectedCategory === 'all' ? 'all categories' : selectedCategory}...`}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-              </div>
+              {/* Center section */}
+              <Link to="/" className="flex items-center">
+                <span className="text-2xl font-bold text-blue-600">Place</span>
+                <span className="text-2xl font-bold text-slate-800">2</span>
+              </Link>
 
               {/* Right section */}
-              <div>
-                {isLoggedIn ? (
-                  <button className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium">
-                    Profile
-                  </button>
-                ) : (
-                  <button className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium">
-                    Sign Up / Login
-                  </button>
-                )}
+              <div className="flex items-center gap-6">
+                <button
+                  onClick={() => setIsPlacesSidebarOpen(true)}
+                  className="p-2 rounded-md hover:bg-slate-50 transition-colors"
+                >
+                  <Globe size={22} className="text-slate-700" />
+                </button>
               </div>
             </div>
           </div>
