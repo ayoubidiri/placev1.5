@@ -123,11 +123,6 @@ function App() {
                 className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            {!isLoggedIn && (
-              <button className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium whitespace-nowrap">
-                Sign Up / Login
-              </button>
-            )}
           </div>
         </div>
         
