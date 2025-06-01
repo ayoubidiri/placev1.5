@@ -99,6 +99,36 @@ function App() {
               <span>Browse Events</span>
             </button>
           </div>
+          
+          {/* Search Area */}
+          <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-40 px-3 py-2 bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700"
+            >
+              {categories.map((category) => (
+                <option key={category.value} value={category.value}>
+                  {category.label}
+                </option>
+              ))}
+            </select>
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+              <input
+                type="text"
+                placeholder={`Search in ${selectedCategory === 'all' ? 'all categories' : selectedCategory}...`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+            {!isLoggedIn && (
+              <button className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium whitespace-nowrap">
+                Sign Up / Login
+              </button>
+            )}
+          </div>
         </div>
         
         <Sidebar 
